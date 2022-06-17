@@ -1067,10 +1067,10 @@ module.exports = g;
   MutationObserver = this.MutationObserver || this.WebkitMutationObserver || this.MozMutationObserver || (MutationObserver = (function() {
     function MutationObserver() {
       if (typeof console !== "undefined" && console !== null) {
-        console.warn('MutationObserver is not supported by your browser.');
+       
       }
       if (typeof console !== "undefined" && console !== null) {
-        console.warn('WOW.js cannot detect dom mutations, please call .sync() after loading new content.');
+       
       }
     }
 
@@ -1472,11 +1472,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var wowjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! wowjs */ "./node_modules/wowjs/dist/wow.js");
 /* harmony import */ var wowjs__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(wowjs__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _modules_modals__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/modals */ "./src/js/modules/modals.js");
+/* harmony import */ var _modules_sliders__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/sliders */ "./src/js/modules/sliders.js");
+
 
 
 
 window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_modals__WEBPACK_IMPORTED_MODULE_2__["modalsModule"])('show', 600000);
+  Object(_modules_sliders__WEBPACK_IMPORTED_MODULE_3__["default"])('.main-slider-item', '', '', 'vertical', 8000);
+  Object(_modules_sliders__WEBPACK_IMPORTED_MODULE_3__["default"])('.feedback-slider-item', '.main-next-btn', '.main-prev-btn', 'horizontal', 8000);
   aos__WEBPACK_IMPORTED_MODULE_0___default.a.init();
   window.wow = new wowjs__WEBPACK_IMPORTED_MODULE_1___default.a.WOW();
   window.wow.init();
@@ -1585,6 +1589,91 @@ var modalsModule = function modalsModule(activeClass, showModalTimer) {
 };
 
 
+
+/***/ }),
+
+/***/ "./src/js/modules/sliders.js":
+/*!***********************************!*\
+  !*** ./src/js/modules/sliders.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var slidersModule = function slidersModule(slidesSelector, next, prev, direction, interval) {
+  var slideIndex = 0;
+  var timerIntervalId;
+  var slides = document.querySelectorAll(slidesSelector);
+  var slidesParent = slides[0].parentNode;
+
+  function showSlides(n) {
+    if (n >= slides.length) {
+      slideIndex = 0;
+    }
+
+    if (n < 0) {
+      slideIndex = slides.length - 1;
+    }
+
+    slides.forEach(function (item) {
+      item.classList.add('hide', 'animated');
+    });
+    slides[slideIndex].classList.remove('hide');
+    slides[slideIndex].classList.add('show');
+  }
+
+  showSlides(slideIndex);
+
+  function changeSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function activateAnimate() {
+    if (direction === 'vertical') {
+      timerIntervalId = setInterval(function () {
+        changeSlides(1);
+        slides[slideIndex].classList.add('slideInDown');
+      }, interval);
+    } else {
+      timerIntervalId = setInterval(function () {
+        changeSlides(1);
+        slides[slideIndex].classList.add('slideInLeft');
+      }, interval);
+    }
+  }
+
+  activateAnimate();
+  slidesParent.addEventListener('mouseenter', function () {
+    clearInterval(timerIntervalId);
+  });
+  slidesParent.addEventListener('mouseleave', function () {
+    activateAnimate();
+  });
+
+  try {
+    var nextBtn = document.querySelector(next);
+    var prevBtn = document.querySelector(prev);
+    nextBtn.addEventListener('click', function () {
+      changeSlides(1);
+      slides[slideIndex].classList.remove('slideInRight');
+      slides[slideIndex].classList.add('slideInLeft');
+    });
+    prevBtn.addEventListener('click', function () {
+      changeSlides(-1);
+      slides[slideIndex].classList.remove('slideInLeft');
+      slides[slideIndex].classList.add('slideInRight');
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (slidersModule);
 
 /***/ })
 
