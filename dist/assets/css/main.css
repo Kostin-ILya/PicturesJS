@@ -3,8 +3,7 @@
   font-family: 'Circe Light';
   src: url('../fonts/Circe-Light.eot');
   src: url('../fonts/Circe-Light.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/Circe-Light.woff') format('woff'),
-    url('../fonts/Circe-Light.ttf') format('truetype');
+    url('../fonts/Circe-Light.woff') format('woff'), url('../fonts/Circe-Light.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -12,16 +11,14 @@
   font-family: 'Circe Regular';
   src: url('../fonts/Circe-Regular.eot');
   src: url('../fonts/Circe-Regular.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/Circe-Regular.woff') format('woff'),
-    url('../fonts/Circe-Regular.ttf') format('truetype');
+    url('../fonts/Circe-Regular.woff') format('woff'), url('../fonts/Circe-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'Circe Bold';
   src: url('../fonts/Circe-Bold.eot');
-  src: url('../fonts/Circe-Bold.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/Circe-Bold.woff') format('woff'),
+  src: url('../fonts/Circe-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/Circe-Bold.woff') format('woff'),
     url('../fonts/Circe-Bold.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
@@ -30,8 +27,7 @@
   font-family: 'Circe Extra Bold';
   src: url('../fonts/Circe-ExtraBold.eot');
   src: url('../fonts/Circe-ExtraBold.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/Circe-ExtraBold.woff') format('woff'),
-    url('../fonts/Circe-ExtraBold.ttf') format('truetype');
+    url('../fonts/Circe-ExtraBold.woff') format('woff'), url('../fonts/Circe-ExtraBold.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -1257,6 +1253,54 @@ h4 {
   transform: translateX(-50%) !important;
   padding: 3rem 6rem 4rem 6rem;
 }
+
+.show {
+  display: block !important;
+}
+.show_inline {
+  display: inline !important;
+}
+.show_flex {
+  display: flex !important;
+}
+.hide {
+  display: none !important;
+}
+.overflow {
+  overflow: hidden;
+}
+.fade {
+  animation-name: fade;
+  animation-duration: 0.5s;
+}
+@keyframes fade {
+  from {
+    opacity: 0.1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.status {
+  text-align: center;
+}
+/* .statusLoadingImg {
+  display: block;
+  margin: 0 auto;
+} */
+.popup__img {
+  justify-content: center;
+  align-items: center;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 @media (max-width: 1399px) {
   .paints {
     display: none;
@@ -1723,48 +1767,4 @@ h4 {
     padding: 3rem 3rem;
     width: 25rem;
   }
-}
-
-.show {
-  display: block !important;
-}
-.show_inline {
-  display: inline !important;
-}
-.show_flex {
-  display: flex !important;
-}
-.hide {
-  display: none !important;
-}
-.overflow {
-  overflow: hidden;
-}
-.fade {
-  animation-name: fade;
-  animation-duration: 0.5s;
-}
-@keyframes fade {
-  from {
-    opacity: 0.1;
-  }
-  to {
-    opacity: 1;
-  }
-}
-.statusLoadingImg {
-  display: block;
-  margin: 0 auto;
-}
-.popup__img {
-  justify-content: center;
-  align-items: center;
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9;
-  background-color: rgba(0, 0, 0, 0.5);
 }

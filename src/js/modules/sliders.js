@@ -60,9 +60,7 @@ const slidersModule = (slidesSelector, next, prev, direction, interval) => {
       slides[slideIndex].classList.remove('slideInLeft');
       slides[slideIndex].classList.add('slideInRight');
     });
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 export default slidersModule;
