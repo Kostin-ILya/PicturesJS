@@ -7,4 +7,4 @@ const postData = async (url, data) => {
   return result;
 };
 
-export { postData };
+export default postData;

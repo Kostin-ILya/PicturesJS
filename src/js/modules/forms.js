@@ -1,5 +1,6 @@
-import { postData } from '../services/postData';
+import postData from '../services/postData';
 import { closeAllModal } from './modals';
+import checkTextInputs from '../services/checkInputs';
 
 const formsModule = () => {
   function bindForm(formSelector) {
@@ -78,6 +79,9 @@ const formsModule = () => {
   }
 
   bindForm('form');
+
+  checkTextInputs('[name="message"]');
+  checkTextInputs('[name="name"]');
 };
 
 export default formsModule;
