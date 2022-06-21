@@ -4749,6 +4749,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_modals__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/modals */ "./src/js/modules/modals.js");
 /* harmony import */ var _modules_sliders__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/sliders */ "./src/js/modules/sliders.js");
 /* harmony import */ var _modules_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/forms */ "./src/js/modules/forms.js");
+/* harmony import */ var _modules_showMoreCards__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/showMoreCards */ "./src/js/modules/showMoreCards.js");
+
 
 
 
@@ -4759,6 +4761,7 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_sliders__WEBPACK_IMPORTED_MODULE_3__["default"])('.main-slider-item', '', '', 'vertical', 800000);
   Object(_modules_sliders__WEBPACK_IMPORTED_MODULE_3__["default"])('.feedback-slider-item', '.main-next-btn', '.main-prev-btn', 'horizontal', 800000);
   Object(_modules_forms__WEBPACK_IMPORTED_MODULE_4__["default"])();
+  Object(_modules_showMoreCards__WEBPACK_IMPORTED_MODULE_5__["default"])('.button-styles', '.styles-2');
   aos__WEBPACK_IMPORTED_MODULE_0___default.a.init();
   window.wow = new wowjs__WEBPACK_IMPORTED_MODULE_1___default.a.WOW();
   window.wow.init();
@@ -4978,6 +4981,35 @@ var modalsModule = function modalsModule(activeClass, showModalTimer) {
 };
 
 
+
+/***/ }),
+
+/***/ "./src/js/modules/showMoreCards.js":
+/*!*****************************************!*\
+  !*** ./src/js/modules/showMoreCards.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var showMoreCards = function showMoreCards(trigger, selector) {
+  var btn = document.querySelector(trigger);
+  var cards = document.querySelectorAll(selector);
+  btn.addEventListener('click', function () {
+    cards.forEach(function (item) {
+      item.classList.add('animated', 'fadeInUp', 'col-sm-3', 'col-sm-offset-0', 'col-xs-10', 'col-xs-offset-1');
+      item.classList.remove('hidden-lg', 'hidden-md', 'hidden-sm', 'hidden-xs');
+    });
+    btn.remove();
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (showMoreCards);
 
 /***/ }),
 
