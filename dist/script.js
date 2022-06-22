@@ -4750,6 +4750,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_sliders__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/sliders */ "./src/js/modules/sliders.js");
 /* harmony import */ var _modules_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/forms */ "./src/js/modules/forms.js");
 /* harmony import */ var _modules_showMoreCards__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/showMoreCards */ "./src/js/modules/showMoreCards.js");
+/* harmony import */ var _services_phoneMask__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./services/phoneMask */ "./src/js/services/phoneMask.js");
+
 
 
 
@@ -4762,6 +4764,7 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_sliders__WEBPACK_IMPORTED_MODULE_3__["default"])('.feedback-slider-item', '.main-next-btn', '.main-prev-btn', 'horizontal', 800000);
   Object(_modules_forms__WEBPACK_IMPORTED_MODULE_4__["default"])();
   Object(_modules_showMoreCards__WEBPACK_IMPORTED_MODULE_5__["default"])('.button-styles', '.styles-2');
+  Object(_services_phoneMask__WEBPACK_IMPORTED_MODULE_6__["default"])('[name="phone"]');
   aos__WEBPACK_IMPORTED_MODULE_0___default.a.init();
   window.wow = new wowjs__WEBPACK_IMPORTED_MODULE_1___default.a.WOW();
   window.wow.init();
@@ -5122,6 +5125,73 @@ var checkTextInputs = function checkTextInputs(selector) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (checkTextInputs);
+
+/***/ }),
+
+/***/ "./src/js/services/phoneMask.js":
+/*!**************************************!*\
+  !*** ./src/js/services/phoneMask.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.string.replace */ "./node_modules/core-js/modules/es.string.replace.js");
+/* harmony import */ var core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_string_replace__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+var phoneMask = function phoneMask(selector) {
+  var inputs = document.querySelectorAll(selector);
+
+  function setCursorPosition(pos, elem) {
+    elem.focus();
+
+    if (elem.setSelectionRange) {
+      elem.setSelectionRange(pos, pos);
+    } else if (elem.createTextRange) {
+      var range = elem.createTextRange();
+      range.collapse(true);
+      range.moveEnd('character', pos);
+      range.moveStart('character', pos);
+      range.select();
+    }
+  }
+
+  function createMask(event) {
+    var matrix = '+7 (___) ___ __ __';
+    var def = matrix.replace(/\D/g, '');
+    var val = this.value.replace(/\D/g, '');
+    var i = 0;
+
+    if (val.length < def.length) {
+      val = def;
+    }
+
+    this.value = matrix.replace(/./g, function (s) {
+      return /[_\d]/.test(s) && i < val.length ? val.charAt(i++) : i >= val.length ? '' : s;
+    });
+
+    if (event.type === 'blur') {
+      if (this.value.length === 2) {
+        this.value = '';
+      }
+    } else {
+      setCursorPosition(2, this);
+    }
+  }
+
+  inputs.forEach(function (item) {
+    item.addEventListener('input', createMask);
+    item.addEventListener('focus', createMask);
+    item.addEventListener('blur', createMask);
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (phoneMask);
 
 /***/ }),
 
