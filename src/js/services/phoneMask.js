@@ -26,20 +26,21 @@ const phoneMask = (selector) => {
       val = def;
     }
 
-    this.value = matrix.replace(/./g, (s) => {
-      return /[_\d]/.test(s) && i < val.length ? val.charAt(i++) : i >= val.length ? '' : s;
-    });
+    this.value = matrix.replace(/./g, (s) =>
+      /[_\d]/.test(s) && i < val.length ? val.charAt(i++) : i >= val.length ? '' : s
+    );
 
     if (event.type === 'blur') {
       if (this.value.length === 2) {
         this.value = '';
       }
     } else {
-      setCursorPosition(2, this);
+      setCursorPosition(this.value.length, this);
     }
   }
 
   inputs.forEach((item) => {
+    item.addEventListener('click', createMask);
     item.addEventListener('input', createMask);
     item.addEventListener('focus', createMask);
     item.addEventListener('blur', createMask);

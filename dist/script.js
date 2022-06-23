@@ -5180,11 +5180,12 @@ var phoneMask = function phoneMask(selector) {
         this.value = '';
       }
     } else {
-      setCursorPosition(2, this);
+      setCursorPosition(this.value.length, this);
     }
   }
 
   inputs.forEach(function (item) {
+    item.addEventListener('click', createMask);
     item.addEventListener('input', createMask);
     item.addEventListener('focus', createMask);
     item.addEventListener('blur', createMask);
