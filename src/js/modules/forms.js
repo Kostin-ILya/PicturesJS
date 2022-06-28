@@ -1,4 +1,4 @@
-import postData from '../services/postData';
+import { postData } from '../services/requests';
 import { closeAllModal } from './modals';
 import checkTextInputs from '../services/checkInputs';
 
