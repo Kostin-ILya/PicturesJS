@@ -1,50 +1,50 @@
 const phoneMask = (selector) => {
-  const inputs = document.querySelectorAll(selector);
+  const inputs = document.querySelectorAll(selector)
 
   function setCursorPosition(pos, elem) {
-    elem.focus();
+    elem.focus()
 
     if (elem.setSelectionRange) {
-      elem.setSelectionRange(pos, pos);
+      elem.setSelectionRange(pos, pos)
     } else if (elem.createTextRange) {
-      const range = elem.createTextRange();
+      const range = elem.createTextRange()
 
-      range.collapse(true);
-      range.moveEnd('character', pos);
-      range.moveStart('character', pos);
-      range.select();
+      range.collapse(true)
+      range.moveEnd('character', pos)
+      range.moveStart('character', pos)
+      range.select()
     }
   }
 
   function createMask(event) {
-    const matrix = '+7 (___) ___ __ __';
-    const def = matrix.replace(/\D/g, '');
-    let val = this.value.replace(/\D/g, '');
-    let i = 0;
+    const matrix = '+7 (___) ___ __ __'
+    const def = matrix.replace(/\D/g, '')
+    let val = this.value.replace(/\D/g, '')
+    let i = 0
 
     if (val.length < def.length) {
-      val = def;
+      val = def
     }
 
     this.value = matrix.replace(/./g, (s) =>
       /[_\d]/.test(s) && i < val.length ? val.charAt(i++) : i >= val.length ? '' : s
-    );
+    )
 
     if (event.type === 'blur') {
       if (this.value.length === 2) {
-        this.value = '';
+        this.value = ''
       }
     } else {
-      setCursorPosition(this.value.length, this);
+      setCursorPosition(this.value.length, this)
     }
   }
 
   inputs.forEach((item) => {
-    item.addEventListener('click', createMask);
-    item.addEventListener('input', createMask);
-    item.addEventListener('focus', createMask);
-    item.addEventListener('blur', createMask);
-  });
-};
+    item.addEventListener('click', createMask)
+    item.addEventListener('input', createMask)
+    item.addEventListener('focus', createMask)
+    item.addEventListener('blur', createMask)
+  })
+}
 
-export default phoneMask;
+export default phoneMask

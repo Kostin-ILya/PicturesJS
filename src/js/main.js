@@ -6,6 +6,7 @@ import formsModule from './modules/forms'
 import showMoreCards from './modules/showMoreCards'
 import phoneMask from './services/phoneMask'
 import calcModule from './modules/calc'
+import tabsModule from './modules/tabs'
 
 window.addEventListener('DOMContentLoaded', () => {
   AOS.init()
@@ -19,6 +20,7 @@ window.addEventListener('DOMContentLoaded', () => {
   slidersModule('.feedback-slider-item', '.main-next-btn', '.main-prev-btn', 'horizontal', 800000)
   formsModule(order)
   calcModule('#size', '#material', '#options', '.promocode', '.calc-price', order)
+  tabsModule()
 
   showMoreCards('.button-styles', '#styles .row')
   phoneMask('[name="phone"]')
