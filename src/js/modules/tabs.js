@@ -1,4 +1,4 @@
-const tabsModule = () => {
+const tabs = () => {
   const tabWrapper = document.querySelector('.portfolio-menu')
   const contentWrapper = document.querySelector('.portfolio-wrapper')
   const liItems = tabWrapper.querySelectorAll('li')
@@ -53,4 +53,4 @@ const tabsModule = () => {
   bindAction('.granddad')
 }
 
-export default tabsModule
+export default tabs

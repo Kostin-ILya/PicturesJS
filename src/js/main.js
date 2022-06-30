@@ -1,12 +1,14 @@
 import AOS from 'aos'
 import WOW from 'wowjs'
-import { modalsModule } from './modules/modals'
-import slidersModule from './modules/sliders'
-import formsModule from './modules/forms'
+import { modals } from './modules/modals'
+import sliders from './modules/sliders'
+import forms from './modules/forms'
+import calc from './modules/calc'
+import tabs from './modules/tabs'
+
 import showMoreCards from './modules/showMoreCards'
 import phoneMask from './services/phoneMask'
-import calcModule from './modules/calc'
-import tabsModule from './modules/tabs'
+import picturesSize from './modules/pictureSize'
 
 window.addEventListener('DOMContentLoaded', () => {
   AOS.init()
@@ -15,13 +17,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const order = {}
 
-  modalsModule('show', 600000)
-  slidersModule('.main-slider-item', '', '', 'vertical', 800000)
-  slidersModule('.feedback-slider-item', '.main-next-btn', '.main-prev-btn', 'horizontal', 800000)
-  formsModule(order)
-  calcModule('#size', '#material', '#options', '.promocode', '.calc-price', order)
-  tabsModule()
+  modals('show', 600000)
+  sliders('.main-slider-item', '', '', 'vertical', 800000)
+  sliders('.feedback-slider-item', '.main-next-btn', '.main-prev-btn', 'horizontal', 800000)
+  forms(order)
+  calc('#size', '#material', '#options', '.promocode', '.calc-price', order)
+  tabs()
 
   showMoreCards('.button-styles', '#styles .row')
   phoneMask('[name="phone"]')
+  picturesSize('.sizes-block')
 })

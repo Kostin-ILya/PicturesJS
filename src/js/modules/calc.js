@@ -1,4 +1,4 @@
-const calcModule = (sizeSelector, materialSelector, optionsSelector, promocodeSelector, resultSelector, order) => {
+const calc = (sizeSelector, materialSelector, optionsSelector, promocodeSelector, resultSelector, order) => {
   const size = document.querySelector(sizeSelector)
   const material = document.querySelector(materialSelector)
   const options = document.querySelector(optionsSelector)
@@ -26,4 +26,4 @@ const calcModule = (sizeSelector, materialSelector, optionsSelector, promocodeSe
   promocode.addEventListener('input', calcPrice)
 }
 
-export default calcModule
+export default calc

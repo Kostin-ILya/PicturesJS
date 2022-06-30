@@ -2,7 +2,7 @@ import { postData } from '../services/requests'
 import { closeAllModal } from './modals'
 import checkTextInputs from '../services/checkInputs'
 
-const formsModule = (order) => {
+const forms = (order) => {
   function bindForm(formSelector) {
     const forms = document.querySelectorAll(formSelector)
     const uploadInputs = document.querySelectorAll('[name=upload]')
@@ -96,4 +96,4 @@ const formsModule = (order) => {
   checkTextInputs('[name="name"]')
 }
 
-export default formsModule
+export default forms
