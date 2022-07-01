@@ -6,7 +6,7 @@ const picturesSize = (selector) => {
     const text = block.querySelectorAll('p:not(.sizes-hit)')
 
     img.classList.add('animated', 'fadeIn')
-    img.src = img.src.slice(0, -4) + '-1.png'
+    img.src = `${img.src.slice(0, -4)}-1.png`
 
     text.forEach((item) => {
       item.classList.add('hide')
@@ -17,7 +17,7 @@ const picturesSize = (selector) => {
     const text = block.querySelectorAll('p')
 
     img.classList.remove('animated', 'fadeIn')
-    img.src = img.src.slice(0, -6) + '.png'
+    img.src = `${img.src.slice(0, -6)}.png`
 
     text.forEach((item) => {
       item.classList.remove('hide')

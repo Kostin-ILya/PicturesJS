@@ -4935,9 +4935,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_forms__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/forms */ "./src/js/modules/forms.js");
 /* harmony import */ var _modules_calc__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/calc */ "./src/js/modules/calc.js");
 /* harmony import */ var _modules_tabs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/tabs */ "./src/js/modules/tabs.js");
-/* harmony import */ var _modules_showMoreCards__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/showMoreCards */ "./src/js/modules/showMoreCards.js");
-/* harmony import */ var _services_phoneMask__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./services/phoneMask */ "./src/js/services/phoneMask.js");
-/* harmony import */ var _modules_pictureSize__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/pictureSize */ "./src/js/modules/pictureSize.js");
+/* harmony import */ var _modules_accordion__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/accordion */ "./src/js/modules/accordion.js");
+/* harmony import */ var _modules_showMoreCards__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/showMoreCards */ "./src/js/modules/showMoreCards.js");
+/* harmony import */ var _services_phoneMask__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./services/phoneMask */ "./src/js/services/phoneMask.js");
+/* harmony import */ var _modules_pictureSize__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/pictureSize */ "./src/js/modules/pictureSize.js");
+
 
 
 
@@ -4959,10 +4961,55 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_forms__WEBPACK_IMPORTED_MODULE_4__["default"])(order);
   Object(_modules_calc__WEBPACK_IMPORTED_MODULE_5__["default"])('#size', '#material', '#options', '.promocode', '.calc-price', order);
   Object(_modules_tabs__WEBPACK_IMPORTED_MODULE_6__["default"])();
-  Object(_modules_showMoreCards__WEBPACK_IMPORTED_MODULE_7__["default"])('.button-styles', '#styles .row');
-  Object(_services_phoneMask__WEBPACK_IMPORTED_MODULE_8__["default"])('[name="phone"]');
-  Object(_modules_pictureSize__WEBPACK_IMPORTED_MODULE_9__["default"])('.sizes-block');
+  Object(_modules_accordion__WEBPACK_IMPORTED_MODULE_7__["default"])('.accordion-heading', '.accordion-block');
+  Object(_modules_showMoreCards__WEBPACK_IMPORTED_MODULE_8__["default"])('.button-styles', '#styles .row');
+  Object(_services_phoneMask__WEBPACK_IMPORTED_MODULE_9__["default"])('[name="phone"]');
+  Object(_modules_pictureSize__WEBPACK_IMPORTED_MODULE_10__["default"])('.sizes-block');
 });
+
+/***/ }),
+
+/***/ "./src/js/modules/accordion.js":
+/*!*************************************!*\
+  !*** ./src/js/modules/accordion.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var accordion = function accordion(triggerSelector, contentSelector) {
+  var headers = document.querySelectorAll(triggerSelector);
+  var blocks = document.querySelectorAll(contentSelector);
+
+  function resetHeight() {
+    blocks.forEach(function (block) {
+      block.style.maxHeight = '';
+    });
+  }
+
+  headers.forEach(function (item) {
+    item.addEventListener('click', function fn() {
+      if (!this.classList.contains('active-style')) {
+        headers.forEach(function (header) {
+          header.classList.remove('active-style');
+        });
+        resetHeight();
+        this.classList.add('active-style');
+        this.nextElementSibling.style.maxHeight = "".concat(this.nextElementSibling.scrollHeight + 60, "px");
+      } else {
+        this.classList.remove('active-style');
+        resetHeight();
+      }
+    });
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (accordion);
 
 /***/ }),
 
@@ -5259,7 +5306,7 @@ var picturesSize = function picturesSize(selector) {
     var img = block.querySelector('img');
     var text = block.querySelectorAll('p:not(.sizes-hit)');
     img.classList.add('animated', 'fadeIn');
-    img.src = img.src.slice(0, -4) + '-1.png';
+    img.src = "".concat(img.src.slice(0, -4), "-1.png");
     text.forEach(function (item) {
       item.classList.add('hide');
     });
@@ -5269,7 +5316,7 @@ var picturesSize = function picturesSize(selector) {
     var img = block.querySelector('img');
     var text = block.querySelectorAll('p');
     img.classList.remove('animated', 'fadeIn');
-    img.src = img.src.slice(0, -6) + '.png';
+    img.src = "".concat(img.src.slice(0, -6), ".png");
     text.forEach(function (item) {
       item.classList.remove('hide');
     });

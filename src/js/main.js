@@ -5,6 +5,7 @@ import sliders from './modules/sliders'
 import forms from './modules/forms'
 import calc from './modules/calc'
 import tabs from './modules/tabs'
+import accordion from './modules/accordion'
 
 import showMoreCards from './modules/showMoreCards'
 import phoneMask from './services/phoneMask'
@@ -23,6 +24,7 @@ window.addEventListener('DOMContentLoaded', () => {
   forms(order)
   calc('#size', '#material', '#options', '.promocode', '.calc-price', order)
   tabs()
+  accordion('.accordion-heading', '.accordion-block')
 
   showMoreCards('.button-styles', '#styles .row')
   phoneMask('[name="phone"]')
