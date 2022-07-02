@@ -6,6 +6,7 @@ import forms from './modules/forms'
 import calc from './modules/calc'
 import tabs from './modules/tabs'
 import accordion from './modules/accordion'
+import burger from './modules/burger'
 
 import showMoreCards from './modules/showMoreCards'
 import phoneMask from './services/phoneMask'
@@ -25,6 +26,7 @@ window.addEventListener('DOMContentLoaded', () => {
   calc('#size', '#material', '#options', '.promocode', '.calc-price', order)
   tabs()
   accordion('.accordion-heading', '.accordion-block')
+  burger('.burger', '.burger-menu')
 
   showMoreCards('.button-styles', '#styles .row')
   phoneMask('[name="phone"]')

@@ -204,6 +204,7 @@ h4 {
 }
 .header .burger-menu li:hover {
   background-color: #eed4d2;
+  font-weight: 900;
 }
 .header .burger-menu li a {
   color: inherit;
@@ -370,6 +371,9 @@ h4 {
 }
 .main-slider-btn img {
   width: 100%;
+}
+.main-slider-item img {
+  max-width: 100%;
 }
 .main-prev-btn {
   left: 0;

@@ -4936,9 +4936,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_calc__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/calc */ "./src/js/modules/calc.js");
 /* harmony import */ var _modules_tabs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/tabs */ "./src/js/modules/tabs.js");
 /* harmony import */ var _modules_accordion__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/accordion */ "./src/js/modules/accordion.js");
-/* harmony import */ var _modules_showMoreCards__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/showMoreCards */ "./src/js/modules/showMoreCards.js");
-/* harmony import */ var _services_phoneMask__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./services/phoneMask */ "./src/js/services/phoneMask.js");
-/* harmony import */ var _modules_pictureSize__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/pictureSize */ "./src/js/modules/pictureSize.js");
+/* harmony import */ var _modules_burger__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/burger */ "./src/js/modules/burger.js");
+/* harmony import */ var _modules_showMoreCards__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/showMoreCards */ "./src/js/modules/showMoreCards.js");
+/* harmony import */ var _services_phoneMask__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./services/phoneMask */ "./src/js/services/phoneMask.js");
+/* harmony import */ var _modules_pictureSize__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./modules/pictureSize */ "./src/js/modules/pictureSize.js");
+
 
 
 
@@ -4962,9 +4964,10 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_calc__WEBPACK_IMPORTED_MODULE_5__["default"])('#size', '#material', '#options', '.promocode', '.calc-price', order);
   Object(_modules_tabs__WEBPACK_IMPORTED_MODULE_6__["default"])();
   Object(_modules_accordion__WEBPACK_IMPORTED_MODULE_7__["default"])('.accordion-heading', '.accordion-block');
-  Object(_modules_showMoreCards__WEBPACK_IMPORTED_MODULE_8__["default"])('.button-styles', '#styles .row');
-  Object(_services_phoneMask__WEBPACK_IMPORTED_MODULE_9__["default"])('[name="phone"]');
-  Object(_modules_pictureSize__WEBPACK_IMPORTED_MODULE_10__["default"])('.sizes-block');
+  Object(_modules_burger__WEBPACK_IMPORTED_MODULE_8__["default"])('.burger', '.burger-menu');
+  Object(_modules_showMoreCards__WEBPACK_IMPORTED_MODULE_9__["default"])('.button-styles', '#styles .row');
+  Object(_services_phoneMask__WEBPACK_IMPORTED_MODULE_10__["default"])('[name="phone"]');
+  Object(_modules_pictureSize__WEBPACK_IMPORTED_MODULE_11__["default"])('.sizes-block');
 });
 
 /***/ }),
@@ -5010,6 +5013,36 @@ var accordion = function accordion(triggerSelector, contentSelector) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (accordion);
+
+/***/ }),
+
+/***/ "./src/js/modules/burger.js":
+/*!**********************************!*\
+  !*** ./src/js/modules/burger.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var burger = function burger(triggerSelector, contentSelector) {
+  var burger = document.querySelector(triggerSelector);
+  var menu = document.querySelector(contentSelector);
+  burger.addEventListener('click', function () {
+    if (document.documentElement.clientWidth < 993 && !menu.classList.contains('show')) {
+      menu.classList.add('show');
+    } else {
+      menu.classList.remove('show');
+    }
+  });
+  window.addEventListener('resize', function () {
+    if (document.documentElement.clientWidth > 993) {
+      menu.classList.remove('show');
+    }
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (burger);
 
 /***/ }),
 
