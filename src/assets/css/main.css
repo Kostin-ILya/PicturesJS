@@ -1310,23 +1310,28 @@ h4 {
   z-index: 9;
   background-color: rgba(0, 0, 0, 0.5);
 }
-
 .accordion-heading.active-style span {
   color: #e950d7;
   font-weight: 900;
 }
-/* .often-questions .accordion-block.active-content {
-  overflow: visible;
-  opacity: 1;
-  margin-top: 1rem;
-  padding: 3rem 4rem;
-} */
-
 .accordion-heading.active-style + div {
   overflow: visible;
   opacity: 1;
   margin-top: 1rem;
   padding: 3rem 4rem;
+}
+.pageup {
+  opacity: 0;
+  width: 26px;
+  height: 26px;
+  position: fixed;
+  bottom: 100px;
+  right: 5%;
+  z-index: 30;
+  background-color: #fff;
+  cursor: pointer;
+  border: 1px solid white;
+  transition: 1s all;
 }
 
 @media (max-width: 1399px) {

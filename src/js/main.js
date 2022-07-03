@@ -11,6 +11,7 @@ import burger from './modules/burger'
 import showMoreCards from './modules/showMoreCards'
 import phoneMask from './services/phoneMask'
 import picturesSize from './modules/pictureSize'
+import scrolling from './services/scrolling'
 
 window.addEventListener('DOMContentLoaded', () => {
   AOS.init()
@@ -31,4 +32,5 @@ window.addEventListener('DOMContentLoaded', () => {
   showMoreCards('.button-styles', '#styles .row')
   phoneMask('[name="phone"]')
   picturesSize('.sizes-block')
+  scrolling('.pageup')
 })

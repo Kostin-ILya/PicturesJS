@@ -4940,6 +4940,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_showMoreCards__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/showMoreCards */ "./src/js/modules/showMoreCards.js");
 /* harmony import */ var _services_phoneMask__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./services/phoneMask */ "./src/js/services/phoneMask.js");
 /* harmony import */ var _modules_pictureSize__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./modules/pictureSize */ "./src/js/modules/pictureSize.js");
+/* harmony import */ var _services_scrolling__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/scrolling */ "./src/js/services/scrolling.js");
+
 
 
 
@@ -4968,6 +4970,7 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_showMoreCards__WEBPACK_IMPORTED_MODULE_9__["default"])('.button-styles', '#styles .row');
   Object(_services_phoneMask__WEBPACK_IMPORTED_MODULE_10__["default"])('[name="phone"]');
   Object(_modules_pictureSize__WEBPACK_IMPORTED_MODULE_11__["default"])('.sizes-block');
+  Object(_services_scrolling__WEBPACK_IMPORTED_MODULE_12__["default"])('.pageup');
 });
 
 /***/ }),
@@ -5026,9 +5029,9 @@ var accordion = function accordion(triggerSelector, contentSelector) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 var burger = function burger(triggerSelector, contentSelector) {
-  var burger = document.querySelector(triggerSelector);
+  var btn = document.querySelector(triggerSelector);
   var menu = document.querySelector(contentSelector);
-  burger.addEventListener('click', function () {
+  btn.addEventListener('click', function () {
     if (document.documentElement.clientWidth < 993 && !menu.classList.contains('show')) {
       menu.classList.add('show');
     } else {
@@ -5788,6 +5791,32 @@ var getResources = function getResources(url) {
 };
 
 
+
+/***/ }),
+
+/***/ "./src/js/services/scrolling.js":
+/*!**************************************!*\
+  !*** ./src/js/services/scrolling.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var scrolling = function scrolling(upSelector) {
+  var up = document.querySelector(upSelector);
+  window.addEventListener('scroll', function () {
+    if (document.documentElement.scrollTop > 1650) {
+      up.classList.remove('fadeOut');
+      up.classList.add('animated', 'fadeIn');
+    } else {
+      up.classList.remove('fadeIn');
+      up.classList.add('fadeOut');
+    }
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (scrolling);
 
 /***/ })
 
