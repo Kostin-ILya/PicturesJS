@@ -56,6 +56,11 @@ const forms = (order) => {
           Object.keys(order).forEach((key) => {
             formData.append(key, order[key])
           })
+          // Добавление нескольких файлов в формДата и удаление 1ого, кот. добавляется автоматом при создании формДата
+          formData.delete('upload')
+          item.querySelector('input').files.forEach((file) => {
+            formData.append(file.name, file)
+          })
         }
 
         postData(api, formData)

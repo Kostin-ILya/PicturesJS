@@ -12,6 +12,7 @@ import showMoreCards from './modules/showMoreCards'
 import phoneMask from './services/phoneMask'
 import picturesSize from './modules/pictureSize'
 import scrolling from './services/scrolling'
+import dragFile from './services/dragFile'
 
 window.addEventListener('DOMContentLoaded', () => {
   AOS.init()
@@ -33,4 +34,5 @@ window.addEventListener('DOMContentLoaded', () => {
   phoneMask('[name="phone"]')
   picturesSize('.sizes-block')
   scrolling('.pageup')
+  dragFile('[name="upload"]')
 })
