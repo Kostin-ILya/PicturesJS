@@ -33,6 +33,6 @@ window.addEventListener('DOMContentLoaded', () => {
   showMoreCards('.button-styles', '#styles .row')
   phoneMask('[name="phone"]')
   picturesSize('.sizes-block')
-  scrolling('.pageup')
+  scrolling('.pageup', '[href^="#"]')
   dragFile('[name="upload"]')
 })

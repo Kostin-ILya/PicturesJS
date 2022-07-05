@@ -4972,7 +4972,7 @@ window.addEventListener('DOMContentLoaded', function () {
   Object(_modules_showMoreCards__WEBPACK_IMPORTED_MODULE_9__["default"])('.button-styles', '#styles .row');
   Object(_services_phoneMask__WEBPACK_IMPORTED_MODULE_10__["default"])('[name="phone"]');
   Object(_modules_pictureSize__WEBPACK_IMPORTED_MODULE_11__["default"])('.sizes-block');
-  Object(_services_scrolling__WEBPACK_IMPORTED_MODULE_12__["default"])('.pageup');
+  Object(_services_scrolling__WEBPACK_IMPORTED_MODULE_12__["default"])('.pageup', '[href^="#"]');
   Object(_services_dragFile__WEBPACK_IMPORTED_MODULE_13__["default"])('[name="upload"]');
 });
 
@@ -5909,7 +5909,11 @@ var getResources = function getResources(url) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var scrolling = function scrolling(upSelector) {
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.for-each */ "./node_modules/core-js/modules/web.dom-collections.for-each.js");
+/* harmony import */ var core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_for_each__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var scrolling = function scrolling(upSelector, localLinksSelector) {
   var up = document.querySelector(upSelector);
   window.addEventListener('scroll', function () {
     if (document.documentElement.scrollTop > 1650) {
@@ -5920,6 +5924,40 @@ var scrolling = function scrolling(upSelector) {
       up.classList.add('fadeOut');
     }
   });
+
+  function smoothScroll() {
+    var links = document.querySelectorAll(localLinksSelector);
+    var speed = 0.2;
+    links.forEach(function (link) {
+      link.addEventListener('click', function fn(ev) {
+        ev.preventDefault();
+        var widthTop = document.documentElement.scrollTop;
+        var hash = this.hash;
+        var toBlock = document.querySelector(hash).getBoundingClientRect().top;
+        var start = null;
+
+        function step(time) {
+          if (start === null) {
+            start = time;
+          }
+
+          var progress = time - start;
+          var r = toBlock < 0 ? Math.max(widthTop - progress / speed, widthTop + toBlock) : Math.min(widthTop + progress / speed, widthTop + toBlock);
+          document.documentElement.scrollTo(0, r);
+
+          if (r === widthTop + toBlock) {
+            window.location.hash = hash;
+          } else {
+            requestAnimationFrame(step);
+          }
+        }
+
+        requestAnimationFrame(step);
+      });
+    });
+  }
+
+  smoothScroll();
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (scrolling);
